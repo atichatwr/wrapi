@@ -3176,7 +3176,7 @@ async function insertErrorlogNav(Fund_Id, Close_Date, Nav_Price ,Asset_Size,Offe
             .input("Bid_Price"          , sql.Numeric(18,4), Bid_Price)
             .input("OfferSwitch_Price"  , sql.Numeric(18,4), OfferSwitch_Price)
             .input("BidSwitch_Price"    , sql.Numeric(18,4), BidSwitch_Price)
-            .input("APIstatus"          , sql.NVarChar,      APIstatus)
+            .input("APIstatus"          , sql.NVarChar,      APIstatus)///
             .input("Create_Date"        , sql.Date,          Create_Date)
             .input("Create_By"          , sql.NVarChar,      Create_By)
             .input("FUNDCODEI"          , sql.NVarChar,      FUNDCODEI)
