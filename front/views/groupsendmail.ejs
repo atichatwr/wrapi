@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('layouts/head') %>
+    <title>send mail</title>
+</head>
+<body>
+    <%- include('layouts/logo') %> 
+    <div class="uk-container">
+
+
+       <h1> ระบบได้ทำการส่งเมล์   </h1>
+
+    <% if (sendmail === 'success') { %>
+    <div class="uk-alert-success" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p>  สถานะ <%= sendmail %></p>
+    </div>
+    
+    <% } else { %>
+    <div class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p>อีเมล์  </p>
+    </div>
+    <% }  %>
+
+    <form action="/groupsend" method="get" id="wr-form" >
+        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Back</button>
+    </form>    
+        <%- include('layouts/footer') %>   
+    </div>
+</body>
+<script>
+     
+</script>
+</html>

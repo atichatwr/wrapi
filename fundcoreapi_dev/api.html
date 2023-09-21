@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Api </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src='main.js'></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <style>
+        p.a {
+          font-family: "Times New Roman", Times, serif;
+        }
+        
+        p.b {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            font-family :system-ui;
+        }
+        
+        </style>
+</head>
+<body>
+    <h1>Wealth Republic  </h1>
+
+<h2>Choose your Api function :</h2>
+
+<form id="wr-form" method="GET">
+ <input type="radio" id="Transaction" name="wr-action" value="Transaction Alllot">
+ <label for="Transaction">Transaction Alllot</label><br>
+ <input type="radio" id="orderinquiry" name="wr-action" value="Order Inquiry">
+ <label for="orderinquiry">Order Inquiry</label><br>
+ <input type="radio" id="Accountinfo" name="wr-action" value="Account info">
+ <label for="Accountinfo">Account info</label> 
+ <input type="text" name="cardno" id="cardno" max="13"  >
+ <label for="cardno">รหัสบัตร ปปช</label></br></br>
+ <button type="submit" name="Transfer"   >Transfer</button>
+</form>
+
+</body>
+<script>
+    // alert( "call Import Order Inquiry" );
+// $('#orderinquiry').submit(function() {
+//    var status = confirm("Click OK to Transfer Order ");
+//    if(status == false){
+//     return false;
+//    }else{
+//     return true; 
+//    }
+//   });
+$('input:radio[name="wr-action"]').change(function(){
+
+if ($(this).val() == 'Transaction Alllot') {
+    //true
+    $('#wr-form').attr('action', 'http://localhost:5000/api/callImportTransaction');
+}
+else if($(this).val() == 'Order Inquiry') {
+    //false
+    $('#wr-form').attr('action', 'http://localhost:5000/api/callImportOrderInquiry');
+
+}else if($(this).val() == 'Account info') {
+    //false
+    $('#wr-form').attr('action', 'http://localhost:5000/api/callImportOrderInquiry');
+}
+});
+
+$('#wr-form').submit(function() {
+   var status = confirm("Click OK to Transfer Order ");
+   if(status == false){
+    return false;
+   }else{
+    return true; 
+   }
+  });
+// var s =  $('form input[type=radio]:checked').val();
+// alert(s)
+// $(document).ready(function(){
+  
+
+</script>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('layouts/head') %>  
+    <title>send pdf </title>
+</head>
+<body>
+    <%- include('layouts/logo') %> 
+    <div class="uk-container">
+       
+            <% var i = 1 %>  
+            <% for( k in datarows ) { %>
+                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+
+                    <% if (datarows[k].send !== null) { %>
+                        <div class="uk-width-1-3">
+                            
+                        </div>
+                        <div class="uk-width-1-3">
+                        <%= i %>    <a href="images/<%= datarows[k].cust_code %>.pdf" target="_blank"> คุณ <%= datarows[k].First_Name_T %> <%= datarows[k].Last_Name_T %> </a> 
+                        </div>
+                             
+                     
+                    <% } else { %>
+                         
+                            <div class="uk-width-1-3">
+                            
+                            </div>
+                            <div class="uk-width-1-3"> <%= i %>  
+                                <input class="uk-checkbox" type="checkbox" id="<%= datarows[k].cust_code %>"checked> <a href="images/<%= datarows[k].cust_code %>.pdf"" target="_blank">คุณ  <%= datarows[k].First_Name_T %> <%= datarows[k].Last_Name_T %></a>
+                            </div>
+                            <div class="uk-width-1-3">
+                                <button class="uk-button uk-button-primary" type="button" uk-toggle="target: #modal-example" onclick="inputidcard('<%= datarows[k].cust_code %>' , '<%= datarows[k].Email %>', '<%= datarows[k].First_Name_T %> <%= datarows[k].Last_Name_T %>')" >Mail</button>
+                            </div>
+                    <% } %>
+                </div>
+                <%   i ++ %>     
+             <% } %>
+        
+        <%- include('layouts/footer') %>    
+    </div>
+    <form action="/sendmailpdf" method="get" id="wr-form" >
+         <div id="modal-example" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Send PDF 
+            <span class="uk-label">Email
+               <p><input class=".uk-input" type="text" name="email" id="email"  ></p> 
+            </span>
+            </h2>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button" onclick="sendmail()">Send</button>
+            </p>
+        </div>
+    </div>
+        <input type="hidden" name="sendmail" id="sendmail" value="test">
+        <input type="hidden" name="mail" id="mail"  >
+        <input type="hidden" name="fullname" id="fullname"  > 
+    </form>  
+   
+    <script>
+        function inputidcard(id,mail,fullname){document.getElementById("sendmail").value = id; document.getElementById("email").value = mail;document.getElementById("fullname").value = fullname;} 
+        function sendmail(){ 
+            var email = document.getElementById("email").value
+            document.getElementById("mail").value = email
+            document.getElementById("wr-form").submit(); 
+        }
+         //$(document).ready(function(){
+           
+// $body = $("body");
+//  $(document).on({
+//      ajaxStart: function() { $body.addClass("loading");    },
+//       ajaxStop: function() { $body.removeClass("loading"); }    
+        //});
+       // $('#wr-form').submit(function(e) {
+
+        //     $("#results").html(" ");
+        //     if ($('input[name="wr-action"]:checked').val() === 'Account info'){
+        //         //var cardno = $('#cardno').val().length;
+        //         if ($('#cardno').val().length != 13) {
+        //                 alert("รหัสบัตรประชาชนไม่ถูกต้อง")
+        //                 return false;
+        //         }else{
+        //             // $('#wr-form').attr('action', 'http://192.168.2.28:5000/api/callFundCustomer/'+$('#cardno').val());
+        //             url_form = 'http://192.168.2.44:5500/api/callFundCustomer/'+$('#cardno').val()
+        //         }
+        //     } 
+          
+        //     var status = confirm("Click OK to Transfer Order ");
+        //         // $('#loader').removeClass('hidden')
+        //         if(status == false){
+        //             return false;
+        //         }else{
+        //             // $('#loader').removeClass('hidden')
+         //           e.preventDefault();
+        //             //$("body").addClass("loading"); 
+        //             $.ajax({   
+        //                 type: "GET",
+        //                 data : $(this).serialize(),
+        //                 url: url_form,
+        //                 beforeSend: function() {
+        //                     $('#loader').removeClass('hidden')
+        //                 },   
+        //                 success: function(data){
+        //                     $("#results").html(data);
+        //                     $("#title-result").html("Result Data")  
+        //                     // console.log(data)                     
+        //                 },
+        //                 complete: function(){
+        //                         $('#loader').addClass('hidden')
+        //                     },   
+        //             });
+        //             // $('#loader').addClass('hidden')
+        //             // $(':input','#wr-form').not(':button, :submit, :reset, :hidden').val('').prop('selected', false); // .prop('checked', false)
+        //                 return true;
+        //             }
+        //         // $('#loader').addClass('hidden')
+        // });
+        // var s =  $('form input[type=radio]:checked').val();
+        // alert(s)
+        // $(document).ready(function(){
+        // $body = $("body");
+        //  $(document).on({
+        //      ajaxStart: function() { $body.addClass("loading");    },
+        //       ajaxStop: function() { $body.removeClass("loading"); }    
+       //  });
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "name": "wealthdb",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon api.js",
+    "dev": "nodemon accountinfo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "body-parser": "^1.19.0",
+    "canvas": "^2.11.2",
+    "chart.js": "^4.3.0",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.0.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "iconv-lite": "^0.6.3",
+    "jpeg-js": "^0.4.4",
+    "mssql": "^9.1.1",
+    "node-cron": "^3.0.1",
+    "nodemailer": "^6.8.0",
+    "nodemon": "^2.0.15",
+    "pdfkit": "^0.13.0",
+    "pdfkit-table": "^0.1.99",
+    "plotly": "^1.0.6",
+    "svg-charts": "^1.0.3",
+    "unzipper": "^0.10.11",
+    "utf8": "^3.0.0"
+  }
+}

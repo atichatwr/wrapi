@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('layouts/head') %>
+    <script src="/axios/axios.min.js"></script>  
+    <title>send pdf </title>
+</head>
+<body>
+    <%- include('layouts/logo') %> 
+    <div class="uk-container"> 
+            <% var i = 1 %>  
+            <% for( k in datarows ) { %>
+                <div class="uk-width-1-3">
+                            
+                </div>
+                <div class="uk-width-1-3"> <%= i %>  
+                      <!-- <a href="" target="_blank" onclick="genpdf('<%= datarows[k].cust_code %>' )">คุณ  <%= datarows[k].First_Name_T %> <%= datarows[k].Last_Name_T %></a> -->
+                    <button class="uk-button uk-button-link" type="button" name="genpdf"  onclick="genpdf('<%= datarows[k].cust_code %>' )" >คุณ  <%= datarows[k].First_Name_T %> <%= datarows[k].Last_Name_T %></button>
+
+                </div>
+                <div class="uk-width-1-3">
+                    
+                </div>
+            <%   i ++ %>     
+            <% } %>
+            <button class="uk-button uk-button-primary" type="button" uk-toggle="target: #modal-example" >Send Mail</button>
+        
+    </div>
+    <form action="/sendgroupmailpdf" method="get" id="wr-form" >
+        <div id="modal-example" uk-modal>
+       <div class="uk-modal-dialog uk-modal-body">
+           <h2 class="uk-modal-title">Gen PDF  for send mail 
+            
+           </h2>
+           <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+           <p class="uk-text-right">
+               <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+               <button class="uk-button uk-button-primary" type="button" onclick="sendmail()">Send</button>
+           </p>
+       </div>
+   </div>
+   <% var e = 1 %>  
+       <% for( k in datarows ) { %>
+        <input type="hidden" name="cust_code<%= e %>" id="<%= datarows[k].cust_code %>" value="<%= datarows[k].cust_code %>">
+        <%   e ++ %>  
+        <% } %> 
+   </form>  
+    <%- include('layouts/footer') %> 
+     <a target="_blank" id="cuspdf" > </a>  
+</body>
+ <script>
+// $body = $("body");
+    function sendmail(){
+        document.getElementById("wr-form").submit(); 
+    }
+    function genpdf(id){
+          axios({
+			method: 'get',
+            url: '/genpdfbyid',
+            params : {id:id } ,
+            timeout:10000
+            })
+            .then(function (response) {
+            // console.log(response.data) 
+            var filename = response.data
+            var pdfclick = document.getElementById('cuspdf');
+            pdfclick.setAttribute('href', 'img/'+filename+'.pdf');
+            //   setTimeout(() => {
+               pdfclick.click();      
+            //   }, 1000);
+            
+            })
+            .catch(function (error) {
+            // handle error
+            alert(error)
+            });
+        
+    }    
+ </script>
+</html>

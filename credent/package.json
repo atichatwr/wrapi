@@ -1,0 +1,28 @@
+{
+  "name": "credent",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ID indentify ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon api.js"
+  },
+  "author": "Thanit K.",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "fs": "^0.0.1-security",
+    "ftp-client": "^0.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "node-cron": "^3.0.2",
+    "node-schedule": "^2.1.0",
+    "nodemailer": "^6.7.5",
+    "nodemon": "^2.0.16",
+    "utf8": "^3.0.0",
+    "yauzl": "^2.10.0"
+  }
+}

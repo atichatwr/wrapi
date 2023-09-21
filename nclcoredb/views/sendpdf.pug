@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+head
+    title genpdf
+    script(src='https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/css/uikit.min.css')
+body
+    .uk-container
+        .uk-tile.uk-tile-primary.uk-padding-small
+            .uk-h4
+                p   PDF GEN
+        //- var image =  #{dirimage}
+        form(role='form' method='POST' action='/api/')
+            each cus in datarows
+                .uk-margin.uk-grid-small.uk-child-width-auto.uk-grid
+                    lable(for=cus.cust_code) ชื่อ : #{cus.First_Name_T}  #{cus.Last_Name_T} รหัสบัตร :  #{cus.cust_code} 
+                        if  cus.send === null   
+                            input#name.uk-checkbox(type='checkbox' name = cus.cust_code )
+                            a(href='/1100200478815.pdf')  
+                                img(src='../image/bt-preview.gif' )
+                           
+                        else
+                            input#name.uk-checkbox(type='checkbox' name = cus.cust_code checked disabled)
+                
+
+  

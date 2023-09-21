@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('layouts/head') %>
+    <title>API</title>
+</head>
+<body>
+    <%- include('layouts/logo') %> 
+    <div class="uk-container"> 
+        <form>
+            <div class="uk-margin-small">
+                <p class="uk-text-lead">Wealth Republic  </p>
+
+                <p class=".uk-text-meta">Choose your Api function :</p>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio"  id="orderinquiry" name="wr-action" value="Order Inquiry" ><label> Order Inquiry </label>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio"id="Accountinfo" name="wr-action" value="Account info"><label>  Customer Profile </label>
+                <input class="uk-text" type="text"  name="cardno" id="cardno" max="13" >
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio" id="Transaction" name="wr-action" value="Transaction Alllot"><label>  Transaction Alllot </label>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio" id="Fund-profile" name="wr-action" value="Fund Profile"><label>  Fund Profile </label>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio" id="Unitbalance" name="wr-action" value="Unitbalance"><label>  Unitbalance </label>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio" id="Holiday" name="wr-action" value="Holiday"  disabled><label>  Holiday </label>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio" id="Fund-Fee" name="wr-action" value="Fee" disabled><label>  Fund Fee </label>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio" id="FundPerformance" name="wr-action" value="FundPerformance" disabled><label>  FundPerformance </label>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio" id="Not-work-day" name="wr-action" value="Not working day"  disabled><label>  Not working day </label>
+            </div>
+            <div class="uk-margin-small">
+                <input class="uk-radio" type="radio"id="Dividend" name="wr-action" value="Dividend"  disabled><label> Dividend </label>
+            </div>
+            <div class="uk-margin-small">
+                <button type="submit" class="uk-button uk-button-primary" name="Transfer">Submit</button>
+            </div>
+            
+        </form>
+    </div>
+    <%- include('layouts/footer') %> 
+</body>
+<script>
+    let url_form 
+    var url =    document.getElementById("wr-action"); 
+    // $('input:radio[name="wr-action"]').change(function(){
+    //     if ($(this).val() === 'Transaction Alllot') {url_form = '/callImportTransaction'
+    //     }else if($(this).val() === 'Order Inquiry')      { url_form = '/callImportOrderInquiry'
+    //     }else if($(this).val() === 'Account info')       {
+    //                                                         var cardno = $('#cardno').val()  
+    //                                                     url_form = '/callFundCustomer/'+cardno
+    //     }else if($(this).val() === 'Not working day')    { url_form = '/getFundConnDataType/FundHoliday'
+    //     }else if($(this).val() === 'Unitbalance')    		{ url_form = '/getFundConnDataType/UnitholderBalance'
+    //     }else if($(this).val() === 'Dividend')           {  url_form = '/getFundConnDataType/DividendTransactions'   }
+    // });
+    
+    // $('#wr-form').submit(function(e) {
+    //     $("#results").html(" ");
+    //     if ($('input[name="wr-action"]:checked').val() === 'Account info'){
+    //         //var cardno = $('#cardno').val().length;
+    //         if ($('#cardno').val().length != 13) {
+    //                 alert("รหัสบัตรประชาชนไม่ถูกต้อง")
+    //                 return false;
+    //         }else{
+    //             // $('#wr-form').attr('action', 'http://192.168.2.28:5000/api/callFundCustomer/'+$('#cardno').val());
+    //             url_form = '/callFundCustomer/'+$('#cardno').val()
+    //         }
+    //     } 
+      
+    //     var status = confirm("Click OK to Transfer Order ");
+    //         // $('#loader').removeClass('hidden')
+    //         if(status == false){
+    //             return false;
+    //         }else{
+    //             // $('#loader').removeClass('hidden')
+    //             e.preventDefault();
+    //             //$("body").addClass("loading"); 
+    //             $.ajax({   
+    //                 type: "GET",
+    //                 data : $(this).serialize(),
+    //                 url: url_form,
+    //                 beforeSend: function() {
+    //                     $('#loader').removeClass('hidden')
+    //                 },   
+    //                 success: function(data){
+    //                     $("#results").html(data);
+    //                     $("#title-result").html("Result Data")  
+    //                     // console.log(data)                     
+    //                 },
+    //                 complete: function(){
+    //                         $('#loader').addClass('hidden')
+    //                     },   
+    //             });
+    //             // $('#loader').addClass('hidden')
+    //             // $(':input','#wr-form').not(':button, :submit, :reset, :hidden').val('').prop('selected', false); // .prop('checked', false)
+    //                 return true;
+    //             }
+    //         // $('#loader').addClass('hidden')
+    // });
+    // var s =  $('form input[type=radio]:checked').val();
+    // alert(s)
+    // $(document).ready(function(){
+    // $body = $("body");
+    //  $(document).on({
+    //      ajaxStart: function() { $body.addClass("loading");    },
+    //       ajaxStop: function() { $body.removeClass("loading"); }    
+    //  });
+    
+    </script>
+</html>
