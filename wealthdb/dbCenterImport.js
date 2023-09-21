@@ -3166,7 +3166,7 @@ async function insertErrorlogNav(Fund_Id, Close_Date, Nav_Price ,Asset_Size,Offe
 
 
 
-        await new sql.ConnectionPool(config).connect().then(pool => {   
+        await new sql.ConnectionPool(config).connect().then(pool => {    
             return pool.request()
             .input("Fund_Id"            , sql.NVarChar,     Fund_Id)
             .input("Close_Date"         , sql.DateTime,     Close_Date)
